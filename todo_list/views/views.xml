@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="todo_list_list">
+            <field name="name">todo_list list</field>
+            <field name="model">todo.list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="color"  widget="color"/>
+                    <field name="is_completed"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="todo_list_form">
+            <field name="name">todo_list from</field>
+            <field name="model">todo.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="color" widget="color"/>
+                            <field name="is_completed"/>
+                        </group>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+     
+
+
+        <!-- server action to the one client -->
+
+     <record id="action_todo_list" model="ir.actions.client">
+        <field name="name">Todo List</field>
+        <field name="tag">todo.action_todo_list_js</field>
+    </record>
+
+        <!-- Top menu item -->
+        <menuitem id="todos" name="ToDo" groups="base.group_user" sequence="15"/>
+        <menuitem name="todo list" id="totodos_list" parent="todos" action="action_todo_list" sequence="1"/>
+
+
+    </data>
+</odoo>
